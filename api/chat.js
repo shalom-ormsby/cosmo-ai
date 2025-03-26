@@ -17,9 +17,9 @@ module.exports = async (req, res) => {
     return res.status(405).json({ message: "Only POST requests allowed" });
   }
 
-  const { messages } = req.body;
-
   try {
+    const { messages } = req.body;
+
     const completion = await openai.chat.completions.create({
       model: process.env.OPENAI_MODEL_ID,
       messages: messages,
