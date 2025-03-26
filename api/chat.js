@@ -5,6 +5,15 @@ const openai = new OpenAI({
 });
 
 export default async function handler(req, res) {
+  // Allow requests from your domain
+  res.setHeader("Access-Control-Allow-Origin", "https://creativepowerup.com");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end(); // Handle preflight
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Only POST requests allowed' });
   }
@@ -24,4 +33,3 @@ export default async function handler(req, res) {
     res.status(500).json({ error: 'Error generating response' });
   }
 }
-
