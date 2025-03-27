@@ -1,7 +1,4 @@
-name = "cosmo-ai"
+name = "main"
 main = "index.js"
 compatibility_date = "2025-03-26"
 workers_dev = true
-
-[vars]
-OPENAI_API_KEY = ""
